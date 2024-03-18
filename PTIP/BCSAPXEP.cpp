@@ -5,25 +5,13 @@ using namespace std;
 #define print(a) cout<<a<<"\n";
 typedef long long ll;
 typedef long double ld;
-ll n;
-ll a[10];
-bool check[100];
-void back(ll i){
-    if (i==n){
-        for(ll i=1;i<=n;i++){
-            cout<<a[i];
-        }
-        cout<<"\n";
-        return;
-    }
-    for(ll b=0;b<=1;b++){
-        a[i+1]=b; back(i+1);
-    }
-}
+ll a[1001];
 int main(){
     //freopen(".INP", "w", stdin);
     //freopen(".OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
-    cin>>n;
-    back(0);
+    ll n;cin>>n;
+    for(ll i=1;i<=n;i++) cin>>a[i];
+    sort(a+1,a+1+n);
+    for(ll i=1;i<=n;i++) print(a[i])
 }

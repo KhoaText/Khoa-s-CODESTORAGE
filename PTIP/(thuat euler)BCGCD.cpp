@@ -5,25 +5,20 @@ using namespace std;
 #define print(a) cout<<a<<"\n";
 typedef long long ll;
 typedef long double ld;
-ll n;
-ll a[10];
-bool check[100];
-void back(ll i){
-    if (i==n){
-        for(ll i=1;i<=n;i++){
-            cout<<a[i];
-        }
-        cout<<"\n";
-        return;
-    }
-    for(ll b=0;b<=1;b++){
-        a[i+1]=b; back(i+1);
-    }
+ll gcd(ll a,ll b){
+    if (a<b) swap(a,b);
+    if (a%b==0) return 1ll*b;
+    if (b) return gcd(a%b,b);
+    return a;
 }
 int main(){
     //freopen(".INP", "w", stdin);
     //freopen(".OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
-    cin>>n;
-    back(0);
+    ll a,b;cin>>a>>b;
+    while(a!=0||b!=0){
+        ll g = gcd(a,b);
+        cout<<g<<" "<<a*b/g<<'\n';
+        cin>>a>>b;
+    }
 }
