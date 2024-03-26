@@ -32,7 +32,7 @@ int main(){
             ll manh1=a[i][j];
             ll manh2=a[i][n]-manh1;
             ll manh3=a[n][j]-manh1;
-            ll manh4=a[n][n]-a[n][j]-a[i][n]+a[i][j];
+            ll manh4=a[n][n]-manh1-manh2-manh3;
             // cout<<manh1<<" "<<manh2<<" "<<manh3<<" "<<manh4<<"\n";
             ans=min(ans,max(manh1,max(manh2,max(manh3,manh4)))-min(manh1,min(manh2,min(manh3,manh4))));
         }
