@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define MOD (ll)(1e9+7)
+#define pb(n) push_back(n)
+#define fi first
+#define se second
+#define print(a) cout<<(a)<<"\n";
+typedef long long ll;
+typedef long double ld;
+
+ll n,m;
+ll ds[1001][1001];
+int main(){
+    //freopen(".INP", "r", stdin);
+    //freopen(".OUT", "w", stdout);
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    cin>>n>>m;
+    for(ll i=1;i<=m;i++){
+        ll a,b;cin>>a>>b;
+        ds[a][b]=ds[b][a]=1;
+    }
+    for(ll i=1;i<=n;i++){
+        for(ll j=1;j<=n;j++)
+            cout<<ds[i][j]<<" ";
+        cout<<"\n";
+    }
+}
