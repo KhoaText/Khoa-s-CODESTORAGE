@@ -10,10 +10,8 @@ typedef long double ld;
 
 ll d[100001];
 int main(){
-    #ifdef ONLINE_JUDGE
     freopen("SHIPPER.INP", "r", stdin);
     freopen("SHIPPER.OUT", "w", stdout);
-    #endif
     ios_base::sync_with_stdio(0);cin.tie(0);
     ll n,m;cin>>n>>m;
     for(ll i=1;i<=n;i++){

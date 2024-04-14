@@ -8,6 +8,6 @@ typedef long double ld;
 
 
 int main(){
-    string a = "abc";
-    print(a.substr(0,1))
+    vector<ll> a = {0,12,312,412};
+    set<ll> t = ;
 }

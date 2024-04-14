@@ -10,10 +10,8 @@ typedef long double ld;
 
 
 int main(){
-    #ifdef ONLINE_JUDGE
     freopen("TONG.INP", "r", stdin);
     freopen("TONG.OUT", "w", stdout);
-    #endif
     ios_base::sync_with_stdio(0);cin.tie(0);
     ll n;cin>>n;
     print((n-1)*(n)/2)

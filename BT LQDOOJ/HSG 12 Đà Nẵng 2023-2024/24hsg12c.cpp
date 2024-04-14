@@ -28,10 +28,8 @@ void xuli(){
     }
 }
 int main(){
-    #ifdef ONLINE_JUDGE
     freopen("DODEP.INP", "r", stdin);
     freopen("DODEP.OUT", "w", stdout);
-    #endif
     ios_base::sync_with_stdio(0);cin.tie(0);
     cin>>n>>q;
     for(ll i=1;i<=n;i++){

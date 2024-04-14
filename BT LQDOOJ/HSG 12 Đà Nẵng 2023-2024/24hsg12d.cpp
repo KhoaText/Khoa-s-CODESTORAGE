@@ -15,10 +15,8 @@ bool comp(guard l1,guard l2){
 }
 ll dp[100001];
 int main(){
-    #ifdef ONLINE_JUDGE
     freopen("HBAOXUAN.INP", "r", stdin);
     freopen("HBAOXUAN.OUT", "w", stdout);
-    #endif
     ios_base::sync_with_stdio(0);cin.tie(0);
     //////
     ll n,m;cin>>n>>m;
