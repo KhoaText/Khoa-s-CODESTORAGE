@@ -6,8 +6,11 @@ using namespace std;
 typedef long long ll;
 typedef long double ld;
 
-
+ll dequy(ll a){
+    print(a)
+    return (a!=1?a+dequy(a-1):1);
+}
 int main(){
-    vector<ll> a = {0,12,312,412};
-    set<ll> t = ;
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    print(dequy(MOD));
 }
