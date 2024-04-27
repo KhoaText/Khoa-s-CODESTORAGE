@@ -42,9 +42,10 @@ ll min_in(ll id,ll l,ll r,ll u,ll v){
     return (d[t1]<d[t2]?t1:t2);
 }
 int main(){
-    // freopen("BOBASO.INP", "r", stdin);
-    // freopen("BOBASO.OUT", "w", stdout);
+    freopen("BOBASO.INP", "r", stdin);
+    freopen("BOBASO.OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
+    d[0]=-1e10;
     d[maxn]=1e10;
     cin>>n;
     FOR(i,1,n) cin>>d[i];
@@ -52,10 +53,10 @@ int main(){
     FOR(i,2,n-1){
         // cout<<max_in(1,1,n,1,k-1)<<" "<<k<<" "<<min_in(1,1,n,k+1,n)<<" "<<<<"\n";
         ll p1=max_in(1,1,n,1,i-1);
-        ll p3=min_in(1,1,n,i+1,n);
+        ll p3=max_in(1,1,n,i+1,n);
         // cout<<p1<<" "<<p3<<"\n";
         // cout<<d[p1]<<" "<<d[i]<<" "<<d[p3]<<"\n";
-        ans = max(ans,(3*d[p1])+(2*d[i])-(5*d[p3]));
+        ans = max(ans,d[p1]-d[i]+d[p3]);
     }
     print(ans)
 }
