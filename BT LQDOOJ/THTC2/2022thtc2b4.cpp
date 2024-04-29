@@ -14,8 +14,8 @@ ll tong(ll l,ll r){
     return (r-l+1)*(r+l)/2;
 }
 int main(){
-    // freopen("DOVUIVE.INP", "r", stdin);
-    // freopen("DOVUIVE.OUT", "w", stdout);
+    freopen("DOVUIVE.INP", "r", stdin);
+    freopen("DOVUIVE.OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
     cin>>n>>k;
     for(ll i=1;i<=n;i++) cin>>d[i];

@@ -12,8 +12,8 @@ const ll maxn = 2e5+1;
 ll n,k;
 ld d[maxn],sum[maxn];
 int main(){
-    //freopen(".INP", "r", stdin);
-    //freopen(".OUT", "w", stdout);
+    freopen("BOCBONG.INP", "r", stdin);
+    freopen("BOCBONG.OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
     cin>>n>>k;
     FOR(i,1,n){cin>>d[i];}

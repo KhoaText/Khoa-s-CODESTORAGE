@@ -42,8 +42,8 @@ ll min_in(ll id,ll l,ll r,ll u,ll v){
     return (d[t1]<d[t2]?t1:t2);
 }
 int main(){
-    // freopen("BOBASO.INP", "r", stdin);
-    // freopen("BOBASO.OUT", "w", stdout);
+    freopen("BOBASO.INP", "r", stdin);
+    freopen("BOBASO.OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
     d[maxn]=1e10;
     cin>>n;

@@ -11,8 +11,8 @@ typedef long double ld;
 ll q;
 ll dp[10][200001][10];
 int main(){
-    // freopen(".INP", "r", stdin);
-    // freopen(".OUT", "w", stdout);
+    freopen("CONG.INP", "r", stdin);
+    freopen("CONG.OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
     FOR(i,0,9){
         dp[i][0][i]=1;
