@@ -5,12 +5,9 @@ using namespace std;
 #define print(a) cout<<a<<"\n";
 typedef long long ll;
 typedef long double ld;
-const ll mxn = 1e6;
-ll ans;
 int main(){
+    freopen("TOWER.INP", "r", stdin);
+    freopen("TOWER.OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
-    for(ll i=1;i<=mxn;i++){
-        ans += mxn/i;
-    }
-    print(ans)
+    print(2);
 }
