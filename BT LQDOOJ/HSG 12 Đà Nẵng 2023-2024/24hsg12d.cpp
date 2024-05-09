@@ -1,55 +1,67 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define MOD (ll)(1e9+7)
-#define pb(n) push_back(n)
+#define pb push_back
 #define fi first
 #define se second
-#define print(a) cout<<a<<"\n";
+#define FOR(i,l,r) for(ll i=(l),_r=(r);i<=_r;i++)
+#define print(a) cout<<(a)<<"\n";
 typedef long long ll;
 typedef long double ld;
-struct guard{
-    ll end,start,cost;
+struct gd
+{
+    ll x,y,c;
 };
-bool comp(guard l1,guard l2){
-    return l1.start <= l2.start && l1.end < l2.end;
+
+const ll maxn = 1e5+10;
+ll m,n,st[maxn*4],dp[maxn];
+vector<gd> d;
+void update(ll id,ll l,ll r,ll x,ll c){
+    if(x<l||r<x) return;
+    if(l==r){
+        st[id] = c;
+        return;
+    }
+    ll mid = (l+r)/2;
+    update(id*2,l,mid,x,c);
+    update(id*2+1,mid+1,r,x,c);
+    st[id] = min(st[id*2],st[id*2+1]);
 }
-ll dp[100001];
+ll get_min(ll id,ll l,ll r,ll x,ll y){
+    if(y<l||r<x) return 1e18;
+    if(x<=l&&r<=y){
+        return st[id];
+    }
+    ll mid = (l+r)/2;
+    return min(get_min(id*2,l,mid,x,y),get_min(id*2+1,mid+1,r,x,y));
+}
+bool cmp(const gd &a,const gd &b){
+    return (a.x!=b.y?a.x<b.x:a.y<b.y);
+}
 int main(){
-    freopen("HBAOXUAN.INP", "r", stdin);
-    freopen("HBAOXUAN.OUT", "w", stdout);
+    //freopen(".INP", "r", stdin);
+    //freopen(".OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
-    //////
-    ll n,m;cin>>n>>m;
-    vector<guard> d{1,{0,0,0}};
+    memset(st,0x3f3f3f3f,sizeof(st));
+    memset(dp,0x3f3f3f3f,sizeof(dp));
+    cin>>n>>m;
     for(ll i=1;i<=m;i++){
-        guard lcl;
-        cin>>lcl.start>>lcl.end>>lcl.cost;
-        d.pb(lcl);
+        ll x,y,c;cin>>x>>y>>c;
+        d.pb({x+1,min(n+1,y+1),c});
     }
-    sort(d.begin(),d.end(),comp);
-    // for(guard a: d){
-    //     cout<<a.start<< " " <<a.end<< " " << a.cost << "\n";
-    // }
-    //////////
-    ll ans = 1000000000000000;
-    for(ll i=1;i<=m;i++){
-        if (d[i].start == 0){ 
-            dp[i]=d[i].cost;
-            continue;
-        }
-        ll mn =  1000000000000000;
-        bool check = 0;
-        for(ll j=1;j<i;j++){
-            if (d[j].start <= d[i].start && d[i].start <=d[j].end && d[j].end < d[i].end&&dp[j]!=0){
-                mn = min(mn,dp[j]);
-                check =1;
-            }
-        }
-        dp[i] = (check?mn+d[i].cost:0);
-        // cout<<i<<" :"<<dp[i]<<"\n";
-        if (d[i].end == n){
-            ans = min(ans,dp[i]);
+    sort(d.begin(),d.end(),cmp);
+    for(auto [x,y,c]: d){
+        if(x==1){
+            dp[1] = min(dp[1],c);
+            dp[y] = min(dp[y],c);
+            update(1,1,n+1,1,dp[1]);
+            update(1,1,n+1,y,dp[y]);
+        }else{
+            ll tmp = get_min(1,1,n+1,x,y-1);
+            // print(tmp)
+            dp[y] = min(dp[y],tmp+c);
+            update(1,1,n+1,y,dp[y]);
         }
     }
-    print(ans)
-}
+    print(dp[n+1])
+}   
