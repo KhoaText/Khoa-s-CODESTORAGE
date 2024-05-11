@@ -10,24 +10,30 @@ typedef long long ll;
 typedef long double ld;
 const ll Mlimit = 1e6;
 
-ll n,m,ans;
+ll n,m,ans,minPrime[Mlimit+1];
 unordered_set<ll> prime;
 bool p[Mlimit+1];
 int main(){
-    //freopen(".INP", "r", stdin);
-    //freope(n".OUT", "w", stdout);
     ios_base::sync_with_stdio(0);cin.tie(0);
     memset(p,1,sizeof(p));
+    cin>>n>>m;
+    for(ll i=2;i<=Mlimit;i++){
+        if(minPrime[i]==0){
+            minPrime[i]=i;
+            for(ll j=i*i;j<=Mlimit;j+=i){
+                if(minPrime[j]==0)minPrime[j]=i;
+            }
+        }
+    }
     ans = m;
     while(n--){
         ll a;cin>>a;
-        for(ll i=2;i*i<=a;i++){
-            if(a%i==0) prime.insert(i);
-            while(a%i==0)a/=i;
+        while(a!=1){
+            prime.insert(minPrime[a]);
+            a/=minPrime[a];
         }
-        if(a!=1) prime.insert(a);
     }
-    for(ll x: prime){//=a;j<=m;j+=a){
+    for(ll x: prime){
         for(ll i=x;i<=m;i+=x)if(p[i]){ans--;p[i]=0;}
     }
     print(ans)
